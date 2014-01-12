@@ -25,7 +25,7 @@ if ($ENV:PATH | Select-String -SimpleMatch $AddedFolder)
     return
 }
 
-$newPath = $oldPath + ’;’ + $AddedFolder
+$newPath = $oldPath + ';' + $AddedFolder
 
 Set-ItemProperty -Path $environmentRegistryKey -Name PATH -Value $newPath
 
