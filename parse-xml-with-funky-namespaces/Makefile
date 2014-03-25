@@ -1,9 +1,9 @@
 MAKEFLAGS += --warn-undefined-variables
 
 PS_SW  =
-PS_SW += -Version 2
+PS_SW += -version 2
 PS_SW += -inputformat none
-PS_SW += -ExecutionPolicy bypass
+PS_SW += -executionpolicy bypass
 
 TIDY_SW =
 TIDY_SW += --force-output true
@@ -27,6 +27,13 @@ ifndef V
 endif
 endif
 
+an: add_node
+add_node:
+	$(QUIET_TIDY)tidy $(TIDY_SW) ts.xml
+	powershell $(PS_SW) -file add-node.ps1
+	-$(QUIET_TIDY)tidy $(TIDY_SW) ts.xml.result
+	-diff -uw ts.xml ts.xml.result
+
 tr: test_remove_node
 test_remove_node:
 	$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml
@@ -41,3 +48,4 @@ test_select_node:
 
 clean:
 	rm -f Unattend.xml.result
+	rm -f ts.xml.result
