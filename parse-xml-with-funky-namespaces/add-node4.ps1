@@ -17,14 +17,11 @@ $file = "Unattend.xml"
 $xmlFile = $file
 [xml]$xmlDoc = Get-Content $xmlFile
 
-c:/cygwin/home/streambox/pdev/powershell-practice/parse-xml-with-funky-namespaces/add-node4.ps1
-
-
-
-$ns = new-object Xml.XmlNamespaceManager $xmlDoc.NameTable
-$ns.AddNamespace('dns', 'urn:schemas-microsoft-com:unattend')
-
-$tmp = $xmlDoc.SelectSingleNode("//dns:component[0]",$ns)
+[System.Xml.XmlNamespaceManager]$ns =$xmlDoc.NameTable
+$ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
+# $tmp = $xml.SelectSingleNode("//urn:Disk[urn:DiskID=1]", $ns)
+# $tmp = $xmlDoc.SelectSingleNode("//dns:component[0]",$ns)
+$tmp = $xml.SelectSingleNode("//urn:component", $ns)
 
 $tmp
 
