@@ -22,6 +22,8 @@ $ns.AddNamespace('dns', 'urn:schemas-microsoft-com:unattend')
 
 $tmp = $xmlDoc.SelectSingleNode("//componenet[0]",$ns)
 
+$tmp
+
 
 exit
 
