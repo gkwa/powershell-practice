@@ -2,6 +2,9 @@
 
 SelectNodes Select-Object  Expand name
 
+powershell createelement AddNamespace importnode
+
+
 #>
 
 $file = "Unattend.xml"
