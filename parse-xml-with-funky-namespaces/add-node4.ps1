@@ -21,7 +21,7 @@ $xmlFile = $file
 $ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 # $tmp = $xml.SelectSingleNode("//urn:Disk[urn:DiskID=1]", $ns)
 # $tmp = $xmlDoc.SelectSingleNode("//dns:component[0]",$ns)
-$tmp = $xml.SelectSingleNode("//urn:component", $ns)
+$tmp = $xmlDoc.SelectSingleNode("//urn:component", $ns)
 
 $tmp
 
