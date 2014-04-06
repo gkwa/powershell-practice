@@ -7,13 +7,6 @@ add_node6:
 	-$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml.result
 	-diff -uw -U10 Unattend.xml Unattend.xml.result
 
-an5: add_node5
-add_node5:
-	$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml
-	powershell $(PS_SW) -file add-node5.ps1
-	-$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml.result
-	-diff -uw -U10 Unattend.xml Unattend.xml.result
-
 an4: add_node4
 add_node4:
 	powershell $(PS_SW) -file add-node4.ps1
