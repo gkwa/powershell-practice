@@ -90,7 +90,7 @@ $ChildWipe = $xml.CreateElement("WillWipeDisk", $ns.LookupNamespace("urn"))
 $ChildWipe.InnerText = "true"
 [void]$NewDisk.AppendChild($ChildWipe)
 
-
-
-[void]$xml.unattend.settings[0].component[0].DiskConfiguration.AppendChild($NewDisk)
+if(-not ($xml.SelectSingleNode("//DiskConfiguration")){
+    [void]$xml.unattend.settings[0].component[0].DiskConfiguration.AppendChild($NewDisk)
+}
 $xml.Save("${file}.result")
