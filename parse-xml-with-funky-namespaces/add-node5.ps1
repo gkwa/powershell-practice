@@ -19,31 +19,29 @@ http://social.technet.microsoft.com/Forums/scriptcenter/en-US/405bd5ba-cb35-4ef6
 
 $file = "Unattend.xml"
 $xmlFile = $file
-[xml]$xmlDoc = Get-Content $xmlFile
+$xml = [XML](Get-Content $xmlFile)
 
-$xml = [XML](Get-Content "Unattend.xml")
-
-[System.Xml.XmlNamespaceManager]$nsmgr =$xml.NameTable
+[System.Xml.XmlNamespaceManager]$nsmgr=$xml.NameTable
 $nsmgr.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 $nsmgr.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 
 $newElement = $xml.CreateElement("Disk", $nsmgr.LookupNamespace("urn"))
 [void]$newElement.SetAttribute("action", $nsmgr.LookupNamespace("wcm"), "add")
-$child1 = $xml.CreateElement("CreatePartitions")
-$child2 = $xml.CreateElement("ModifyPartitions")
-$child3 = $xml.CreateElement("DiskID")
-$child3.InnerText = "5"
-$child4 = $xml.CreateElement("WillWipeDisk")
-$child4.InnerText = "false"
+
+$child1 = $xml.CreateElement("CreatePartitions",$nsmgr.LookupNamespace("urn"))
+[void]$child1.SetAttribute("action", $nsmgr.LookupNamespace("wcm"), "add")
+
+$child2 = $xml.CreateElement("ModifyPartitions",$nsmgr.LookupNamespace("urn"))
+$child3 = $xml.CreateElement("DiskID",$nsmgr.LookupNamespace("urn"))
+$child3.InnerText = "0"
+$child4 = $xml.CreateElement("WillWipeDisk",$nsmgr.LookupNamespace("urn"))
+$child4.InnerText = "true"
 [void]$newElement.AppendChild($child1)
 [void]$newElement.AppendChild($child2)
 [void]$newElement.AppendChild($child3)
 [void]$newElement.AppendChild($child4)
-write-host  "before"
-$xml.unattend.settings.component.DiskConfiguration
-$xml.unattend.settings.component.DiskConfiguration.AppendChild($newElement)
-write-host "after"
-$xml.unattend.settings.component.DiskConfiguration
-$xml.save(".\toto.xml")
+$xml.Save("${file}.result")
 
-$xmlDoc.Save("${file}.result")
+
+
+$child1.outerxml
