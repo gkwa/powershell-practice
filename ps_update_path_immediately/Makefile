@@ -4,3 +4,5 @@ test:
 
 check:
 	cmd /c reg query 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
+
+clean:

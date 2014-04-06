@@ -1,31 +1,23 @@
-MAKEFLAGS += --warn-undefined-variables
+include ../common-settings.mk
 
-PS_SW  =
-PS_SW += -version 2
-PS_SW += -inputformat none
-PS_SW += -executionpolicy bypass
+ace2: add_child_element2
+add_child_element2:
+	powershell $(PS_SW) -file add-child-element2.ps1
 
-TIDY_SW =
-TIDY_SW += --force-output true
-TIDY_SW += --tidy-mark no
-TIDY_SW += --doctype strict
-TIDY_SW += --indent-attributes true
-TIDY_SW += --vertical-space true
-TIDY_SW += -q
-TIDY_SW += -xml
-TIDY_SW += -i
-TIDY_SW += -wrap 60000
-TIDY_SW += -c
-TIDY_SW += -modify
+ace: add_child_element
+add_child_element:
+	powershell $(PS_SW) -file add-child-element.ps1
 
+an3: add_node3
+add_node3:
+	powershell $(PS_SW) -file add-node3.ps1
 
-QUIET_TIDY =
-ifneq ($(findstring $(MAKEFLAGS),s),s)
-ifndef V
-	QUIET_TIDY = @echo '   ' TIDY $@;
-	export V
-endif
-endif
+an2: add_node2
+add_node2:
+	$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml
+	powershell $(PS_SW) -file add-node2.ps1
+	-$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml.result
+	-diff -uw -U10 Unattend.xml Unattend.xml.result
 
 an: add_node
 add_node:
