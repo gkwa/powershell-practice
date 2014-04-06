@@ -28,11 +28,20 @@ $tmp = $xmlDoc.SelectSingleNode("//urn:component", $ns)
 
 $newComp = $tmp.CloneNode($false)
 
-$child= $xmlDoc.CreateElement("fDenyTSConnections", $ns)
-$child.SetAttribute("action", $ns.LookupNamespace("urn"), "add")
+$child= $xmlDoc.CreateElement("fDenyTSConnections", $xmlDoc.DocumentElement.NamespaceURI)
+$child.innertext = "false"
+
+
+
 
 $child.outerxml
+$child.GetType()
+$xmlDoc.DocumentElement.NamespaceURI
+
 exit
+
+
+
 
 
 $clone = $xmlDoc.unattend.settings[0].component[0].clonenode($false)
