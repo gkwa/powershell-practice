@@ -26,7 +26,7 @@ $tmp = $xmlDoc.SelectSingleNode("//urn:component", $ns)
 $newComp = $tmp.CloneNode($false)
 
 $child= $xmlDoc.CreateElement("fDenyTSConnections", $ns)
-$child.SetAttribute("action", $ns.LookupNamespace("wcm"), "add")
+$child.SetAttribute("action", $ns.LookupNamespace("urn"), "add")
 
 $child
 exit
