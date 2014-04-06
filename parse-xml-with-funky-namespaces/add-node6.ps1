@@ -22,73 +22,73 @@ $xmlFile = $file
 
 $xml = [XML](Get-Content $xmlFile)
 
-[System.Xml.XmlNamespaceManager]$nsmgr =$xml.NameTable
-$nsmgr.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
-$nsmgr.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
+[System.Xml.XmlNamespaceManager]$ns =$xml.NameTable
+$ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
+$ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 
 # <Disk wcm:action="add">
-$NewDisk = $xml.CreateElement("Disk", $nsmgr.LookupNamespace("urn"))
-[void]$NewDisk.SetAttribute("action", $nsmgr.LookupNamespace("wcm"),"add")
+$NewDisk = $xml.CreateElement("Disk", $ns.LookupNamespace("urn"))
+[void]$NewDisk.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
 # <CreatePartitions>
-$ChildCreatePartitions = $xml.CreateElement("CreatePartitions", $nsmgr.LookupNamespace("urn"))
+$ChildCreatePartitions = $xml.CreateElement("CreatePartitions", $ns.LookupNamespace("urn"))
 [void]$NewDisk.AppendChild($ChildCreatePartitions)
 
 # <CreatePartition wcm:action="add">
-$ChildCreatePartition  = $xml.CreateElement("CreatePartition",$nsmgr.LookupNamespace("urn"))
-[void]$ChildCreatePartition.SetAttribute("action", $nsmgr.LookupNamespace("wcm"),"add")
+$ChildCreatePartition  = $xml.CreateElement("CreatePartition",$ns.LookupNamespace("urn"))
+[void]$ChildCreatePartition.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
 [void]$ChildCreatePartitions.AppendChild($ChildCreatePartition)
 
 # <Order>1</Order>
-$ChildOrder = $xml.CreateElement("Order", $nsmgr.LookupNamespace("urn"))
+$ChildOrder = $xml.CreateElement("Order", $ns.LookupNamespace("urn"))
 $ChildOrder.InnerText = "1"
 [void]$ChildCreatePartition.AppendChild($ChildOrder)
 
 # <Type>Primary</Type>
-$ChildType = $xml.CreateElement("Type", $nsmgr.LookupNamespace("urn"))
+$ChildType = $xml.CreateElement("Type", $ns.LookupNamespace("urn"))
 $ChildType.InnerText = "Primary"
 [void]$ChildCreatePartition.AppendChild($ChildType)
 
 # <Extend>true</Extend>
-$ChildExtend = $xml.CreateElement("Extend", $nsmgr.LookupNamespace("urn"))
+$ChildExtend = $xml.CreateElement("Extend", $ns.LookupNamespace("urn"))
 $ChildExtend.InnerText = "true"
 [void]$ChildCreatePartition.AppendChild($ChildExtend)
 
 # <ModifyPartitions>
-$ChildModifyPartitions = $xml.CreateElement("ModifyPartitions", $nsmgr.LookupNamespace("urn"))
+$ChildModifyPartitions = $xml.CreateElement("ModifyPartitions", $ns.LookupNamespace("urn"))
 [void]$NewDisk.AppendChild($ChildModifyPartitions)
 
 # <ModifyPartition wcm:action="add">
-$ChildModifyPartition  = $xml.CreateElement("ModifyPartition",$nsmgr.LookupNamespace("urn"))
-[void]$ChildModifyPartition.SetAttribute("action", $nsmgr.LookupNamespace("wcm"),"add")
+$ChildModifyPartition  = $xml.CreateElement("ModifyPartition",$ns.LookupNamespace("urn"))
+[void]$ChildModifyPartition.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
 [void]$ChildModifyPartitions.AppendChild($ChildModifyPartition)
 
 # <Format>NTFS</Format>
-$ChildFormat = $xml.CreateElement("Format", $nsmgr.LookupNamespace("urn"))
+$ChildFormat = $xml.CreateElement("Format", $ns.LookupNamespace("urn"))
 $ChildFormat.InnerText = "NTFS"
 [void]$ChildModifyPartition.AppendChild($ChildFormat)
 
 # <Label>Software</Label>
-$ChildLabel = $xml.CreateElement("Label", $nsmgr.LookupNamespace("urn"))
+$ChildLabel = $xml.CreateElement("Label", $ns.LookupNamespace("urn"))
 $ChildLabel.InnerText = "Data"
 [void]$ChildModifyPartition.AppendChild($ChildLabel)
 
 # <Order>1</Order>
-$ChildOrder = $xml.CreateElement("Order", $nsmgr.LookupNamespace("urn"))
+$ChildOrder = $xml.CreateElement("Order", $ns.LookupNamespace("urn"))
 $ChildOrder.InnerText = "1"
 [void]$ChildModifyPartition.AppendChild($ChildOrder)
 
 # <PartitionID>1</PartitionID
-$ChildPartitionID = $xml.CreateElement("PartitionID", $nsmgr.LookupNamespace("urn"))
+$ChildPartitionID = $xml.CreateElement("PartitionID", $ns.LookupNamespace("urn"))
 $ChildPartitionID.InnerText = "1"
 [void]$ChildModifyPartition.AppendChild($ChildPartitionID)
 
 # <DiskID>0</DiskID>
-$ChildDiskID = $xml.CreateElement("DiskID", $nsmgr.LookupNamespace("urn"))
+$ChildDiskID = $xml.CreateElement("DiskID", $ns.LookupNamespace("urn"))
 $ChildDiskID.InnerText = "1" # must be unique in the xml file !
 [void]$NewDisk.AppendChild($ChildDiskID)
 
 # <WillWipeDisk>true</WillWipeDisk>
-$ChildWipe = $xml.CreateElement("WillWipeDisk", $nsmgr.LookupNamespace("urn"))
+$ChildWipe = $xml.CreateElement("WillWipeDisk", $ns.LookupNamespace("urn"))
 $ChildWipe.InnerText = "true"
 [void]$NewDisk.AppendChild($ChildWipe)
 
