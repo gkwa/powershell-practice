@@ -8,9 +8,7 @@ xmlns:xsi
 powershell get_DocumentElement appendchild
 powershell appendchild DocumentElement namespace
 powershell appendchild DocumentElement namespace importnode
-
 powershell createelement "same namespace"
-
 
 http://stackoverflow.com/questions/135000/how-to-prevent-blank-xmlns-attributes-in-output-from-nets-xmldocument
 http://social.technet.microsoft.com/Forums/scriptcenter/en-US/405bd5ba-cb35-4ef6-8a7d-bc4846e5ce8f/adding-a-disk-section-in-a-existing-unattendxml-file-using-powershell?forum=winserverpowershell
@@ -91,6 +89,8 @@ $ChildDiskID.InnerText = "1" # must be unique in the xml file !
 $ChildWipe = $xml.CreateElement("WillWipeDisk", $ns.LookupNamespace("urn"))
 $ChildWipe.InnerText = "true"
 [void]$NewDisk.AppendChild($ChildWipe)
+
+
 
 [void]$xml.unattend.settings[0].component[0].DiskConfiguration.AppendChild($NewDisk)
 $xml.Save("${file}.result")
