@@ -1,5 +1,9 @@
 include ../common-settings.mk
 
+an4: add_node4
+add_node4:
+	powershell $(PS_SW) -file add-node4.ps1
+
 ace2: add_child_element2
 add_child_element2:
 	powershell $(PS_SW) -file add-child-element2.ps1
