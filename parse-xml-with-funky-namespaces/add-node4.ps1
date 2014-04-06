@@ -11,6 +11,12 @@ powershell appendchild DocumentElement namespace importnode
 
 powershell createelement "same namespace"
 
+powershell appendchild namespace importnode AddNamespace
+
+powersehll CreateElement
+
+powersehll CreateElement component name xmlns
+
 http://social.technet.microsoft.com/Forums/scriptcenter/en-US/405bd5ba-cb35-4ef6-8a7d-bc4846e5ce8f/adding-a-disk-section-in-a-existing-unattendxml-file-using-powershell?forum=winserverpowershell
 http://stackoverflow.com/questions/135000/how-to-prevent-blank-xmlns-attributes-in-output-from-nets-xmldocument
 

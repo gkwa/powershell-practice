@@ -1,5 +1,9 @@
 include ../common-settings.mk
 
+an5: add_node5
+add_node5:
+	powershell $(PS_SW) -file add-node5.ps1
+
 an4: add_node4
 add_node4:
 	powershell $(PS_SW) -file add-node4.ps1
