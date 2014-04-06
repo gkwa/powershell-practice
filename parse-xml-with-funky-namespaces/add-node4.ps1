@@ -28,7 +28,7 @@ $newComp = $tmp.CloneNode($false)
 $child= $xmlDoc.CreateElement("fDenyTSConnections", $ns)
 $child.SetAttribute("action", $ns.LookupNamespace("wcm"), "add")
 
-
+$child
 exit
 
 
