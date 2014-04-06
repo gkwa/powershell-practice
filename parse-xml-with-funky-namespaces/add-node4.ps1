@@ -23,7 +23,9 @@ $ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 # $tmp = $xmlDoc.SelectSingleNode("//dns:component[0]",$ns)
 $tmp = $xmlDoc.SelectSingleNode("//urn:component", $ns)
 
-$tmp
+$newComp = $tmp.CloneNode($false)
+
+$child= $xmlDoc.CreateElement("fDenyTSConnections", $ns)
 
 
 exit
