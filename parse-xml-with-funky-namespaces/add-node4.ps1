@@ -1,52 +1,4 @@
 <#
-powershell ParentNode SelectSingleNode appendchild
-#>
-
-
-
-
-
-<#
-
-AppendChild : Exception calling "AppendChild" with "1" argument(s): "The node to be inserted is from a different document context."
-
-
-
-"----------------------------------------"
-$xmlDoc.unattend.settings[0].component[0]
-"----------------------------------------"
-
-
-"++++++++++++++++++++++++++++++"
-$comp.outerxml
-"++++++++++++++++++++++++++++++"
-
-
-
-"++++++++++++++++++++++++++++++"
-$comp.ParentNode.FirstChild
-"++++++++++++++++++++++++++++++"
-
-
-Exit
-
-"++++++++++++++++++++++++++++++"
-$comp
-"++++++++++++++++++++++++++++++"
-$comp.outerxml
-"++++++++++++++++++++++++++++++"
-
-Exit
-
-$xmlDoc.DocumentElement.NamespaceURI
-
-#>
-
-
-
-
-<#
-
 SelectNodes Select-Object  Expand name
 
 powershell xmlns:wcm
@@ -59,12 +11,20 @@ powershell appendchild DocumentElement namespace importnode
 
 http://social.technet.microsoft.com/Forums/scriptcenter/en-US/405bd5ba-cb35-4ef6-8a7d-bc4846e5ce8f/adding-a-disk-section-in-a-existing-unattendxml-file-using-powershell?forum=winserverpowershell
 
-
 #>
 
 $file = "Unattend.xml"
 $xmlFile = $file
 [xml]$xmlDoc = Get-Content $xmlFile
+
+$ns = new-object Xml.XmlNamespaceManager $xmlDoc.NameTable
+$ns.AddNamespace('dns', 'urn:schemas-microsoft-com:unattend')
+
+$tmp = $xmlDoc.SelectSingleNode("//componenet[0]",$ns)
+
+
+exit
+
 
 $clone = $xmlDoc.unattend.settings[0].component[0].clonenode($false)
 $clone.GetType()
