@@ -94,6 +94,8 @@ if(-not $xml.SelectSingleNode("//DiskConfiguration"))
 {
     $NewDiskConfig = $xml.CreateElement("DiskConfiguration", $ns.LookupNamespace("urn"))
     [void]$NewDiskConfig.AppendChild($NewDisk)
-    [void]$xml.unattend.settings[0].component[0].AppendChild($NewDiskConfig)
+
+    $Component = $xml.unattend.settings.component | where { [string]$_.name -eq "Microsoft-Windows-Setup" }
+    $Component.AppendChild($NewDiskConfig)
 }
 $xml.Save("${file}.result")
