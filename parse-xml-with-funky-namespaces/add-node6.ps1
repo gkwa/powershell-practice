@@ -20,19 +20,21 @@ $xmlFile = $file
 
 $xml = [XML](Get-Content $xmlFile)
 
-[System.Xml.XmlNamespaceManager]$ns =$xml.NameTable
+
+[System.Xml.XmlNamespaceManager]$ns = $xml.NameTable
 $ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 
 # <Disk wcm:action="add">
 $NewDisk = $xml.CreateElement("Disk", $ns.LookupNamespace("urn"))
 [void]$NewDisk.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
+
 # <CreatePartitions>
 $ChildCreatePartitions = $xml.CreateElement("CreatePartitions", $ns.LookupNamespace("urn"))
 [void]$NewDisk.AppendChild($ChildCreatePartitions)
 
-# <CreatePartition wcm:action="add">
-$ChildCreatePartition  = $xml.CreateElement("CreatePartition",$ns.LookupNamespace("urn"))
+# <CreatePartition wcm:action = "add">
+$ChildCreatePartition = $xml.CreateElement("CreatePartition",$ns.LookupNamespace("urn"))
 [void]$ChildCreatePartition.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
 [void]$ChildCreatePartitions.AppendChild($ChildCreatePartition)
 
@@ -55,8 +57,8 @@ $ChildExtend.InnerText = "true"
 $ChildModifyPartitions = $xml.CreateElement("ModifyPartitions", $ns.LookupNamespace("urn"))
 [void]$NewDisk.AppendChild($ChildModifyPartitions)
 
-# <ModifyPartition wcm:action="add">
-$ChildModifyPartition  = $xml.CreateElement("ModifyPartition",$ns.LookupNamespace("urn"))
+# <ModifyPartition wcm:action = "add">
+$ChildModifyPartition = $xml.CreateElement("ModifyPartition",$ns.LookupNamespace("urn"))
 [void]$ChildModifyPartition.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
 [void]$ChildModifyPartitions.AppendChild($ChildModifyPartition)
 
@@ -98,4 +100,5 @@ if(-not $xml.SelectSingleNode("//urn:DiskConfiguration",$ns))
     $Component = $xml.SelectSingleNode("//urn:component[@name='Microsoft-Windows-Setup']",$ns)
     $Component.AppendChild($NewDiskConfig)
 }
+
 $xml.Save("${file}.result")
