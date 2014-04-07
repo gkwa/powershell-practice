@@ -26,7 +26,7 @@ $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 
 # <Disk wcm:action="add">
 $NewDisk = $xml.CreateElement("Disk", $ns.LookupNamespace("urn"))
-[void]$NewDisk.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
+[void]$NewDisk.SetAttribute("action", $ns.LookupNamespace("wcm"), "add")
 
 # <CreatePartitions>
 $ChildCreatePartitions = $xml.CreateElement("CreatePartitions", $ns.LookupNamespace("urn"))
@@ -34,7 +34,7 @@ $ChildCreatePartitions = $xml.CreateElement("CreatePartitions", $ns.LookupNamesp
 
 # <CreatePartition wcm:action = "add">
 $ChildCreatePartition = $xml.CreateElement("CreatePartition",$ns.LookupNamespace("urn"))
-[void]$ChildCreatePartition.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
+[void]$ChildCreatePartition.SetAttribute("action", $ns.LookupNamespace("wcm"), "add")
 [void]$ChildCreatePartitions.AppendChild($ChildCreatePartition)
 
 # <Order>1</Order>
@@ -58,7 +58,7 @@ $ChildModifyPartitions = $xml.CreateElement("ModifyPartitions", $ns.LookupNamesp
 
 # <ModifyPartition wcm:action = "add">
 $ChildModifyPartition = $xml.CreateElement("ModifyPartition",$ns.LookupNamespace("urn"))
-[void]$ChildModifyPartition.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
+[void]$ChildModifyPartition.SetAttribute("action", $ns.LookupNamespace("wcm"), "add")
 [void]$ChildModifyPartitions.AppendChild($ChildModifyPartition)
 
 # <Format>NTFS</Format>
