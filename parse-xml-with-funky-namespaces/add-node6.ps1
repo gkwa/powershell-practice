@@ -20,7 +20,6 @@ $xmlFile = $file
 
 $xml = [XML](Get-Content $xmlFile)
 
-
 [System.Xml.XmlNamespaceManager]$ns = $xml.NameTable
 $ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
