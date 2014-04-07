@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+an7: add_node7
+add_node7:
+	$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml
+	powershell $(PS_SW) -file add-node7.ps1
+	-$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml.result
+	-diff -uw -U5 Unattend.xml Unattend.xml.result
+
 an6: add_node6
 add_node6:
 	$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml
