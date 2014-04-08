@@ -1,5 +1,8 @@
 include ../common-settings.mk
 
+guid:
+	powershell $(PS_SW) -file get-guid-for-shortname.ps1 -shortname "Customize Profile"
+
 an7: add_node7
 add_node7:
 	$(QUIET_TIDY)tidy $(TIDY_SW) Unattend.xml
