@@ -1,5 +1,8 @@
 MAKEFLAGS += --warn-undefined-variables
 
+TIDY = tidy
+PS = powershell
+
 PS_SW  =
 PS_SW += -version 2
 PS_SW += -inputformat none
@@ -17,9 +20,11 @@ TIDY_SW += -wrap 60000
 TIDY_SW += -c
 TIDY_SW += -modify
 
+QUIET_PS =
 QUIET_TIDY =
 ifneq ($(findstring $(MAKEFLAGS),s),s)
 ifndef V
+	QUIET_PS = @echo '   ' POWERSHELL $@;
 	QUIET_TIDY = @echo '   ' TIDY $@;
 	export V
 endif
