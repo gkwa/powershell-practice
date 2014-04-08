@@ -1,0 +1,30 @@
+<applications>
+  <application guid="{2ddda494-de7f-4fe4-82e9-c624bfbce9ab}"
+               enable="True">
+    <Name>Customize default user profile</Name>
+    <CreatedTime>4/8/2014 4:20:54 AM</CreatedTime>
+    <CreatedBy>IMAGEPC\streambox</CreatedBy>
+    <LastModifiedTime>4/8/2014 4:20:54 AM</LastModifiedTime>
+    <LastModifiedBy>IMAGEPC\streambox</LastModifiedBy>
+    <ShortName>Customize Profile</ShortName>
+    <Version>1</Version>
+    <Language>English</Language>
+    <Source>.\Applications\Streambox Customize Profile v1</Source>
+    <CommandLine>powershell -version 2 -inputformat none -executionpolicy bypass -file win_autoconfigure.ps1</CommandLine>
+    <WorkingDirectory>.\Applications\Streambox Customize Profile v1</WorkingDirectory>
+  </application>
+  <application guid="{dc012960-8e69-41eb-8717-c489b912ed9e}"
+               enable="True">
+    <Name>Add icons to user desktop</Name>
+    <CreatedTime>4/8/2014 4:20:54 AM</CreatedTime>
+    <CreatedBy>IMAGEPC\streambox</CreatedBy>
+    <LastModifiedTime>4/8/2014 4:20:54 AM</LastModifiedTime>
+    <LastModifiedBy>IMAGEPC\streambox</LastModifiedBy>
+    <ShortName>Add icons to desktop</ShortName>
+    <Version>1</Version>
+    <Language>English</Language>
+    <Source>.\Applications\Streambox Add icons to desktop v1</Source>
+    <CommandLine>add-icon-to-desktop.exe /S</CommandLine>
+    <WorkingDirectory>.\Applications\Streambox Add icons to desktop v1</WorkingDirectory>
+  </application>
+</applications>
