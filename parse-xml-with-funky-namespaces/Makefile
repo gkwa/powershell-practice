@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+ia: insert_after
+insert_after:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file insertAfter.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml.result
+	-diff -uw -U15 ts.xml ts.xml.result
+
 get_guid:
 	$(QUIET_PS)$(PS) $(PS_SW) -file get-guid-for-shortname.ps1 -shortname "Customize Profile"
 
