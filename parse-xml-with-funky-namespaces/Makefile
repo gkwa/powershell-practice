@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+ia2: insert_after2
+insert_after2:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file insertAfter2.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml.result
+	-diff -uw -U15 ts.xml ts.xml.result
+
 ia: insert_after
 insert_after:
 	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
