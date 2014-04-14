@@ -5,3 +5,4 @@ clean:
 	$(MAKE) -C parse-xml-with-funky-namespaces clean
 	$(MAKE) -C ps_update_path_immediately clean
 	$(MAKE) -C update_xml clean
+	$(MAKE) -C ini_manip clean
