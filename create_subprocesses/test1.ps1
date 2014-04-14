@@ -1,3 +1,9 @@
+<#
+
+http://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx
+
+#>
+
 Function wait_for_capture_to_be_created()
 {
     $ps = new-object System.Diagnostics.Process
