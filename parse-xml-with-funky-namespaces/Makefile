@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+ialc: insert_afterlc
+insert_afterlc:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file insertAfterLastChild.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml.result
+	-diff -uw -U15 ts.xml ts.xml.result
+
 ia4: insert_after4
 insert_after4:
 	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
