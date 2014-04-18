@@ -6,4 +6,8 @@ clean:
 	$(MAKE) -C ps_update_path_immediately clean
 	$(MAKE) -C update_xml clean
 	$(MAKE) -C ini_manip clean
+<<<<<<< HEAD
 	$(MAKE) -C create_subprocesses clean
+=======
+	$(MAKE) -C paths_and_shares clean
+>>>>>>> Add script to check current machine for list of shared drives
