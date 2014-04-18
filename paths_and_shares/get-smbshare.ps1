@@ -1,2 +1,1 @@
-$pc = $ENV:Computername
-net.exe view $pc | ForEach-Object {"$_"}
+gwmi -class Win32_Share | % { $_.Name }
