@@ -15,14 +15,19 @@ http://social.technet.microsoft.com/Forums/scriptcenter/en-US/405bd5ba-cb35-4ef6
 
 #>
 
-$xml = [XML](gc "Unattend.xml")
+$filename = "Unattend.xml"
+$xml = [XML](gc $filename)
 
 [System.Xml.XmlNamespaceManager]$ns = $xml.NameTable
 $ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 
-$settings = ($xml.SelectNodes('//urn:settings') | where { $_.pass -eq 'specialize' })[0]
-$networking = $settings.SelectNodes('//urn:component') | where { $_.name -eq 'Networking-MPSSVC-Svc' }
+# $pass = ($xml.SelectNodes('//urn:settings',$ns) | where { $_.pass -eq 'specialize' })[0]
+$pass = $xml.SelectSingleNode('//urn:settings[@pass="specialize"]',$ns)
+
+"settings=$pass"
+
+$networking = $pass.SelectNodes('//urn:component',$ns) | where { $_.name -eq 'Networking-MPSSVC-Svc' }
 
 $networking
 
@@ -68,4 +73,4 @@ $networking
 # # Enable remote desktop during Generlize phase
 # [void]$xml.SelectSingleNode("//urn:settings[@pass='generalize']", $ns).AppendChild($comp3)
 
-$xml.Save("${file}.result")
+$xml.Save("${filename}.result")
