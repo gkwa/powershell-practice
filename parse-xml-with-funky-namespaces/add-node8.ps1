@@ -47,8 +47,31 @@ if(!$networking)
 "@
 #    $newNode = $xml.ImportNode($fwgroup.DocumentElement,$true)
 
-    $newNode = $xml.ImportNode($fwgroup.DocumentElement,$true)
-    [void]$settings.component.appendchild($newNode,$ns)
+    # <Group>Remote Desktop</Group>
+    $group = $xml.CreateElement("Group", $ns.LookupNamespace("urn"))
+    $group.InnerText = "Remote Desktop"
+
+    # <Profile>all</Profile>
+    $profile = $xml.CreateElement("Profile", $ns.LookupNamespace("urn"))
+    $profile.InnerText = "all"
+
+    # <Active>true</Active>
+    $active = $xml.CreateElement("Active", $ns.LookupNamespace("urn"))
+    $active.InnerText = "true"
+
+    # <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
+    $fwgroup1 = $xml.CreateElement("FirewallGroup", $ns.LookupNamespace("urn"))
+    [void]$fwgroup1.SetAttribute("action", $ns.LookupNamespace("wcm"), "add")
+    [void]$fwgroup1.SetAttribute("RemoteDesktop", $ns.LookupNamespace("wcm"), "keyValue")
+
+#     <FirewallGroups>
+    $fwgroup = $xml.CreateElement("FirewallGroup", $ns.LookupNamespace("urn"))
+    
+    $fwgroup1.AppendChild($group)
+    $fwgroup1.AppendChild($profile)
+    $fwgroup1.AppendChild($active)
+    $fwgroup.AppendChild($fwgroup1)
+
 }
 
 
