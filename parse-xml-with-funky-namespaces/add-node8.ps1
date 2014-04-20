@@ -36,15 +36,15 @@ if(!$networking)
     $component = $settings.component[0].clonenode($false)
     # $settings.addChild(
     $component.outerxml
-    $fwgroup=[xml]@"
-<FirewallGroups>
-    <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
-	<Group>Remote Desktop</Group>
-	<Profile>all</Profile>
-	<Active>true</Active>
-    </FirewallGroup>
-</FirewallGroups>
-"@
+#     $fwgroup=[xml]@"
+# <FirewallGroups>
+#     <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
+# 	<Group>Remote Desktop</Group>
+# 	<Profile>all</Profile>
+# 	<Active>true</Active>
+#     </FirewallGroup>
+# </FirewallGroups>
+# "@
 #    $newNode = $xml.ImportNode($fwgroup.DocumentElement,$true)
 
     # <Group>Remote Desktop</Group>
