@@ -15,6 +15,7 @@ TIDY_SW += --doctype strict
 TIDY_SW += --indent-attributes true
 TIDY_SW += -q
 TIDY_SW += -xml
+TIDY_SW += -utf8
 TIDY_SW += -i
 TIDY_SW += -wrap 60000
 TIDY_SW += -c
