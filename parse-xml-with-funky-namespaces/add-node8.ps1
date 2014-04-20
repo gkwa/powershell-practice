@@ -49,8 +49,8 @@ if(!($settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }))
 {
     $component = $settings.component[0].clonenode($false)
     [void]$component.SetAttribute("name", 'Networking-MPSSVC-Svc')
-    $component.outerxml
 
+    $component.outerxml
 
 #    $component.outerxml
 #     $fwgroup=[xml]@"
@@ -91,7 +91,7 @@ if(!($settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }))
     [void]$component.AppendChild($fwgroup1)
     $component.outerxml
 
-    [void]$settings.appenChild($component)
+    [void]$settings.appendChild($component)
 }
 
 
