@@ -22,7 +22,7 @@ $ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 
 $settings = ($xml.SelectNodes('//urn:settings') | where { $_.pass -eq 'specialize' })[0]
-$networking = $settings.SelectNodes('//urn:component') | where { $_.name -eq 'Networking-MPSSVC-Svc' })[0]
+$networking = $settings.SelectNodes('//urn:component') | where { $_.name -eq 'Networking-MPSSVC-Svc' }
 
 $networking
 
