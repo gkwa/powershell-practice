@@ -67,10 +67,10 @@ if(!$networking)
 #     <FirewallGroups>
     $fwgroup = $xml.CreateElement("FirewallGroup", $ns.LookupNamespace("urn"))
 
-    $fwgroup1.AppendChild($group)
-    $fwgroup1.AppendChild($profile)
-    $fwgroup1.AppendChild($active)
-    $fwgroup.AppendChild($fwgroup1)
+    [void]$fwgroup1.AppendChild($group)
+    [void]$fwgroup1.AppendChild($profile)
+    [void]$fwgroup1.AppendChild($active)
+    [void]$fwgroup.AppendChild($fwgroup1)
 
 }
 
