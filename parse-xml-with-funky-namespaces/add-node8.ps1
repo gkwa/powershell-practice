@@ -32,7 +32,6 @@ $networking = $settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' 
 if(!$networking)
 {
     $component = $settings.component[0].clonenode($false)
-    # $settings.addChild(
     $component.outerxml
 #     $fwgroup=[xml]@"
 # <FirewallGroups>
