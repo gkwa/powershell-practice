@@ -72,7 +72,7 @@ if(!$networking)
     [void]$fwgroup1.AppendChild($active)
     [void]$fwgroup.AppendChild($fwgroup1)
     [void]$component.AppendChild($fwgroup1)
-    $component
+    $component.outerxml
 }
 
 
