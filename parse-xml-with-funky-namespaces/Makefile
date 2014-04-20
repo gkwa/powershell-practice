@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+an8: add_node8
+add_node8:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) Unattend.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file add-node8.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) Unattend.xml.result
+	-diff -uw -U5 Unattend.xml Unattend.xml.result
+
 ialc: insert_afterlc
 insert_afterlc:
 	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
