@@ -94,12 +94,6 @@ if(!($settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }))
     [void]$settings.appendChild($component)
 }
 
-
-
-
-
-
-
 # $clone_cli = $step_cli.cloneNode($false)
 # [void]$clone_cli.SetAttribute("name", "", "Shutdown computer")
 # [void]$clone_cli.SetAttribute("disable", "", "false")
