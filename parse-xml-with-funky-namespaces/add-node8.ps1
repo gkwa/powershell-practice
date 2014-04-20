@@ -48,7 +48,9 @@ $settings = $xml.SelectSingleNode('//urn:settings[@pass="specialize"]', $ns)
 if(!($settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }))
 {
     $component = $settings.component[0].clonenode($false)
-    $componnent.name = 'Networking-MPSSVC-Svc'
+    [void]$component.SetAttribute("name", 'Networking-MPSSVC-Svc')
+    $component.outerxml
+
 
 #    $component.outerxml
 #     $fwgroup=[xml]@"
@@ -89,7 +91,7 @@ if(!($settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }))
     [void]$component.AppendChild($fwgroup1)
     $component.outerxml
 
-    $settings.appenChild($component)
+    [void]$settings.appenChild($component)
 }
 
 
