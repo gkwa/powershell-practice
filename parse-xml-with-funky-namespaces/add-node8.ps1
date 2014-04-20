@@ -1,3 +1,6 @@
+
+
+
 <#
 
 powershell xmlns:wcm ImportNode
@@ -18,6 +21,20 @@ http://social.technet.microsoft.com/Forums/scriptcenter/en-US/405bd5ba-cb35-4ef6
 
 #>
 
+
+
+# Creates this:
+# <component name="Networking-MPSSVC-Svc" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+#     <FirewallGroups>
+#         <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
+#             <Group>Remote Desktop</Group>
+#             <Profile>all</Profile>
+#             <Active>true</Active>
+#         </FirewallGroup>
+#     </FirewallGroups>
+# </component>
+
+
 $filename = "Unattend.xml"
 [xml]$xml = (gc $filename)
 
@@ -28,11 +45,12 @@ $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 # $pass = ($xml.SelectNodes('//urn:settings',$ns) | where { $_.pass -eq 'specialize' })[0]
 $settings = $xml.SelectSingleNode('//urn:settings[@pass="specialize"]', $ns)
 
-$networking = $settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }
-if(!$networking)
+if(!($settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }))
 {
     $component = $settings.component[0].clonenode($false)
-    $component.outerxml
+    $componnent.name = 'Networking-MPSSVC-Svc'
+
+#    $component.outerxml
 #     $fwgroup=[xml]@"
 # <FirewallGroups>
 #     <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
@@ -70,18 +88,11 @@ if(!$networking)
     [void]$fwgroup.AppendChild($fwgroup1)
     [void]$component.AppendChild($fwgroup1)
     $component.outerxml
+
+    $settings.appenChild($component)
 }
 
 
-# <component name="Networking-MPSSVC-Svc" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-#     <FirewallGroups>
-#         <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
-#             <Group>Remote Desktop</Group>
-#             <Profile>all</Profile>
-#             <Active>true</Active>
-#         </FirewallGroup>
-#     </FirewallGroups>
-# </component>
 
 
 
