@@ -39,9 +39,9 @@ if(!$networking)
     $fwgroup=[xml]@"
 <FirewallGroups>
     <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
-        <Group>Remote Desktop</Group>
-        <Profile>all</Profile>
-        <Active>true</Active>
+	<Group>Remote Desktop</Group>
+	<Profile>all</Profile>
+	<Active>true</Active>
     </FirewallGroup>
 </FirewallGroups>
 "@
@@ -66,7 +66,7 @@ if(!$networking)
 
 #     <FirewallGroups>
     $fwgroup = $xml.CreateElement("FirewallGroup", $ns.LookupNamespace("urn"))
-    
+
     $fwgroup1.AppendChild($group)
     $fwgroup1.AppendChild($profile)
     $fwgroup1.AppendChild($active)
