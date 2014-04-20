@@ -1,4 +1,7 @@
 <#
+
+powershell xmlns:wcm ImportNode
+
 SelectNodes Select-Object  Expand name
 
 powershell xmlns:wcm
@@ -16,20 +19,51 @@ http://social.technet.microsoft.com/Forums/scriptcenter/en-US/405bd5ba-cb35-4ef6
 #>
 
 $filename = "Unattend.xml"
-$xml = [XML](gc $filename)
+[xml]$xml = (gc $filename)
 
 [System.Xml.XmlNamespaceManager]$ns = $xml.NameTable
 $ns.AddNamespace('urn', "urn:schemas-microsoft-com:unattend")
 $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 
 # $pass = ($xml.SelectNodes('//urn:settings',$ns) | where { $_.pass -eq 'specialize' })[0]
-$pass = $xml.SelectSingleNode('//urn:settings[@pass="specialize"]',$ns)
+$settings = $xml.SelectSingleNode('//urn:settings[@pass="specialize"]',$ns)
 
-"settings=$pass"
+# $networking = $pass.SelectSingleNode('./urn:component',$ns) | where { $_.name -eq 'Networking-MPSSVC-Svc' }
+# $networking = $pass.SelectSingleNode('./urn:component/*',$ns)
+$networking = $settings.component | where { $_.name -eq 'Networking-MPSSVC-Svc' }
+if(!$networking)
+{
+    $component = $settings.component[0].clonenode($false)
+    # $settings.addChild(
+    $component.outerxml
+    $fwgroup=[xml]@"
+<FirewallGroups>
+    <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
+        <Group>Remote Desktop</Group>
+        <Profile>all</Profile>
+        <Active>true</Active>
+    </FirewallGroup>
+</FirewallGroups>
+"@
+#    $newNode = $xml.ImportNode($fwgroup.DocumentElement,$true)
 
-$networking = $pass.SelectNodes('//urn:component',$ns) | where { $_.name -eq 'Networking-MPSSVC-Svc' }
+    $newNode = $xml.ImportNode($fwgroup.DocumentElement,$true)
+    [void]$settings.component.appendchild($newNode,$ns)
+}
 
-$networking
+
+# <component name="Networking-MPSSVC-Svc" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+#     <FirewallGroups>
+#         <FirewallGroup wcm:action="add" wcm:keyValue="RemoteDesktop">
+#             <Group>Remote Desktop</Group>
+#             <Profile>all</Profile>
+#             <Active>true</Active>
+#         </FirewallGroup>
+#     </FirewallGroups>
+# </component>
+
+
+
 
 
 # $clone_cli = $step_cli.cloneNode($false)
