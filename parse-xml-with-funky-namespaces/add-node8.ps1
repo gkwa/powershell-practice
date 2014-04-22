@@ -14,6 +14,8 @@
 
 <#
 
+powershell xmlns:wcm ImportNode InnerText
+
 powershell xmlns:wcm ImportNode
 
 SelectNodes Select-Object  Expand name
