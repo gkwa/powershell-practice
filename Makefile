@@ -1,4 +1,5 @@
 clean:
+	$(MAKE) -C env_vars_play clean
 	$(MAKE) -C add_paths_common_binaries clean
 	$(MAKE) -C call_system_command clean
 	$(MAKE) -C clean_path clean
