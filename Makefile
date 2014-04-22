@@ -11,4 +11,3 @@ clean:
 	$(MAKE) -C ini_manip clean
 	$(MAKE) -C create_subprocesses clean
 	$(MAKE) -C paths_and_shares clean
-
