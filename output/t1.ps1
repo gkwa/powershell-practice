@@ -1,7 +1,7 @@
 # Doesn't work to suppress newline
-echo -nonewline test
+echo -nonewline test #doesn't work
 
-write -NoNewline "test"
+write -NoNewline "test" #doesn't work
 
-write-host -NoNewline "test"
-write-host -NoNewline "test2"
+write-host -NoNewline "test" #works
+write-host -NoNewline "test2" #works
