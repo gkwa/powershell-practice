@@ -9,5 +9,6 @@ clean:
 	$(MAKE) -C update_xml clean
 	$(MAKE) -C ternary clean
 	$(MAKE) -C ini_manip clean
+	$(MAKE) -C timespan clean
 	$(MAKE) -C create_subprocesses clean
 	$(MAKE) -C paths_and_shares clean
