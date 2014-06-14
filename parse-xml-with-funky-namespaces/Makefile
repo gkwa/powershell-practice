@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+ffirst: find_firstlogoncommands
+find_firstlogoncommands:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) Unattend.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file find-firstlogoncommands.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) Unattend.xml.result
+	-diff -uw -U5 Unattend.xml Unattend.xml.result
+
 an8: add_node8
 add_node8:
 	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) Unattend.xml
