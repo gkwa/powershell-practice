@@ -203,13 +203,6 @@
         <RefreshRate>60</RefreshRate>
         <VerticalResolution>768</VerticalResolution>
       </Display>
-      <FirstLogonCommands>
-        <SynchronousCommand wcm:action="add">
-          <CommandLine>wscript.exe %SystemDrive%\LTIBootstrap.vbs</CommandLine>
-          <Description>Lite Touch new OS</Description>
-          <Order>1</Order>
-        </SynchronousCommand>
-      </FirstLogonCommands>
       <OOBE>
         <HideEULAPage>true</HideEULAPage>
         <NetworkLocation>Work</NetworkLocation>
