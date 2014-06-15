@@ -15,6 +15,11 @@ XmlElement get_DocumentElement Error "is an undeclared namespace"
 
 Error: "'wcm' is an undeclared namespace
 
+powershell empty xmlns
+get_DocumentElement()
+
+powershell get_DocumentElement() empty namespace
+
 #>
 
 
@@ -57,16 +62,15 @@ $ns.AddNamespace('wcm', "http://schemas.microsoft.com/WMIConfig/2002/State")
 $settings = $xml.SelectSingleNode('//urn:settings[@pass="oobeSystem"]', $ns)
 $comp = $settings.component | where { $_.name -eq 'Microsoft-Windows-Shell-Setup' }
 
-# $firstlogon = $comp.FirstLogonCommands.FirstChild.outerxml
 $order = $comp.FirstLogonCommands.SynchronousCommand.Order
-# $order = $comp.FirstLogonCommands.LastChild.Order
 $count = $comp.FirstLogonCommands.ChildNodes.Count
-
 Write-Host "order:$order,count:$count"
 
 [System.Xml.XmlElement]$command = ([xml]@"
-<SynchronousCommand wcm:action="add"
-	   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+<SynchronousCommand
+wcm:action="add"
+xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+>
 <Order></Order>
 <CommandLine></CommandLine>
 <Description></Description>
@@ -74,16 +78,36 @@ Write-Host "order:$order,count:$count"
 </SynchronousCommand>
 "@).get_DocumentElement()
 
+$command.outerxml
+
+
 # $comp.FirstLogonCommands.outerxml
 
 [System.Xml.XmlNode]$commandNode = $xml.ImportNode($command, $True)
 [System.Xml.XmlElement]$x= $comp.FirstLogonCommands.AppendChild($commandNode)
 
-if(!$fistlogon)
-{
-    Write-Host "no firstlogon"
-}else{
-    Write-Host "found"
-}
+# <SynchronousCommand wcm:action="add">
+$SynchronousCommand = $xml.CreateElement("SynchronousCommand", $ns.LookupNamespace("urn"))
+[void]$SynchronousCommand.SetAttribute("action", $ns.LookupNamespace("wcm"),"add")
+
+# <Order>
+$Order = $xml.CreateElement("Order", $ns.LookupNamespace("urn"))
+$Order.InnerText=1
+
+# <CommandLine>
+$Commandline = $xml.CreateElement("CommandLine", $ns.LookupNamespace("urn"))
+
+# <Description>
+$Description = $xml.CreateElement("Description", $ns.LookupNamespace("urn"))
+
+# <RequiresUserInput>
+$RequiresUserInput = $xml.CreateElement("RequiresUserInput", $ns.LookupNamespace("urn"))
+
+[void]$SynchronousCommand.AppendChild($Order)
+[void]$SynchronousCommand.AppendChild($CommandLine)
+[void]$SynchronousCommand.AppendChild($Description)
+[void]$SynchronousCommand.AppendChild($RequiresUserInput)
+
+[void]$comp.FirstLogonCommands.AppendChild($SynchronousCommand)
 
 $xml.Save("${filename}.result")
