@@ -69,6 +69,7 @@ Write-Host "order:$order,count:$count"
 [System.Xml.XmlElement]$command = ([xml]@"
 <SynchronousCommand
 wcm:action="add"
+xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
 >
 <Order></Order>
 <CommandLine></CommandLine>
