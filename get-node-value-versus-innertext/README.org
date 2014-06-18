@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/7877609/xmlnode-value-vs-innertext
+https://www.simple-talk.com/sysadmin/powershell/powershell-data-basics-xml/
+
+If, for example, your XML looks like <Foo>Bar</Foo> then "Bar" is
+actually considered a separate node: an XmlText node (sub-classed from
+XmlNode). The Value property of that XmlText node would be "Bar".
+
+"Foo" is considered to be an XmlElement (also sub-classed from
+XmlNode). XmlNode.Value returns different things based on the type of
+node it is. See this table
+(http://msdn.microsoft.com/en-us/library/system.xml.xmlnode.value%28v=VS.110%29.aspx)
+which shows that Value always returns null for Element nodes.
+
+The InnerText of the Foo node returns "Bar" because it concatenates the
+values of its children (in this case, only the one XmlText node).

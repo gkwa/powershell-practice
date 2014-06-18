@@ -1,4 +1,5 @@
 clean:
+	$(MAKE) -C get-node-value-versus-innertext clean
 	$(MAKE) -C make_should_fail_with_exit_ps clean
 	$(MAKE) -C env_vars_play clean
 	$(MAKE) -C add_paths_common_binaries clean

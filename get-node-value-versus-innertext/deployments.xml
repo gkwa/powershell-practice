@@ -1,0 +1,26 @@
+<deployments orgName="Streambox"
+             homePage="www.google.com"
+             adminPassword="Stre@mb0x">
+  <WS7E>
+    <os_name>Windows Embedded Standard 7</os_name>
+    <os_index>1</os_index>
+    <wimNameOnFirstImport>Windows Embedded Standard 7 in Source install.wim</wimNameOnFirstImport>
+    <pssubfolder>WS7E x86</pssubfolder>
+    <folder>WS7E x86</folder>
+    <taskid_standard_client comment="Windows Standard Embedded 7 Install"
+                            name="WS7E Install">WS7E_INSTALL</taskid_standard_client>
+    <taskid_sysprep_capture comment="Capture OS install to WIM image"
+                            name="WS7E Capture">WS7E_CAPTURE</taskid_sysprep_capture>
+    <install_wim_rel_path>SOURCES\INSTALL.WIM</install_wim_rel_path>
+  </WS7E>
+  <WS7P>
+    <os_name>t</os_name>
+    <os_index>4</os_index>
+    <wimNameOnFirstImport>Windows 7 PROFESSIONAL in Source install.wim</wimNameOnFirstImport>
+    <pssubfolder>Windows 7 x86</pssubfolder>
+    <folder>Windows 7 x86</folder>
+    <taskid comment="Windows 7 Pro"
+            name="Windows 7 Pro Install">WS7P_INSTALL</taskid>
+    <install_wim_rel_path>SOURCES\INSTALL.WIM</install_wim_rel_path>
+  </WS7P>
+</deployments>
