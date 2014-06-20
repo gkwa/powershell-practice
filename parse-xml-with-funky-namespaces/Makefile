@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+an9: add_node9
+add_node9:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts2.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file add-node9.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts2.xml.result
+	-diff -uw -U15 ts2.xml ts2.xml.result
+
 ffirst: find_firstlogoncommands
 find_firstlogoncommands:
 	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) Unattend.xml
@@ -111,3 +118,4 @@ test_select_node:
 clean:
 	rm -f Unattend.xml.result
 	rm -f ts.xml.result
+	rm -f ts2.xml.result
