@@ -1,5 +1,12 @@
 include ../common-settings.mk
 
+dar: disable_after_restore
+disable_after_restore:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file disable-step-disable-after-restore.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml.result
+	-diff -uw -U15 ts.xml ts.xml.result
+
 an9: add_node9
 add_node9:
 	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts2.xml
