@@ -17,6 +17,10 @@ set-itemproperty "hklm:\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-B
 
 #>
 
+[CmdletBinding()]
+Param(
+    [Parameter(Mandatory=$false)] [switch]$quiet
+)
 
 $script=$MyInvocation.MyCommand.Name
 $outfile = (Get-Location).Path + "\${script}_step1.ps1"
@@ -45,6 +49,12 @@ foreach($key in Get-ItemProperty "$base\*" -ea SilentlyContinue | ForEach-Object
 
 	      if($value -match "Disabled"){
 		  $newDefaultValue=$_
+		  if(!$quiet)
+		  {
+		      @"
+"Disabling Flow Control for network interfact bound to key $key"
+"@ >>"$outfile"
+		  }
 		  "set-itemproperty ""$base\$key"" ""*FlowControl"" $newDefaultValue"  >>"$outfile"
 	      }
 	  }
@@ -72,6 +82,12 @@ foreach($key in Get-ItemProperty "$base\*" -ea SilentlyContinue | ForEach-Object
 
 	      if($value -match "Disabled"){
 		  $newDefaultValue=$_
+		  if(!$quiet)
+		  {
+		      @"
+"Disabling Interrupt Moderation for network interfact bound to key $key"
+"@ >>"$outfile"
+		  }
 		  "set-itemproperty ""$base\$key"" ""*InterruptModeration"" $newDefaultValue"  >>"$outfile"
 	      }
 	  }
@@ -99,6 +115,12 @@ foreach($key in Get-ItemProperty "$base\*" -ea SilentlyContinue | ForEach-Object
 
 	      if($value -match "Off"){
 		  $newDefaultValue = $_
+		  if(!$quiet)
+		  {
+		      @"
+"Setting default Interrupt Moderation Rate type (Adaptive, High, Extreme,...) to Off for network interfact bound to key $key"
+"@ >>"$outfile"
+		  }
 		  "set-itemproperty ""$base\$key"" ""ITR"" $newDefaultValue" >>"$outfile"
 	      }
 	  }
