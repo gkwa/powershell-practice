@@ -118,7 +118,7 @@ foreach($key in Get-ItemProperty "$base\*" -ea SilentlyContinue | ForEach-Object
 		  if(!$quiet)
 		  {
 		      @"
-"Setting default Interrupt Moderation Rate type (Adaptive, High, Extreme,...) to Off for network interfact bound to key $key"
+"Setting default Interrupt Moderation Rate (Adaptive, High, Extreme, etc.) to Off for network interfact bound to key $key"
 "@ >>"$outfile"
 		  }
 		  "set-itemproperty ""$base\$key"" ""ITR"" $newDefaultValue" >>"$outfile"
