@@ -19,7 +19,7 @@ set-itemproperty "hklm:\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-B
 
 
 $script=$MyInvocation.MyCommand.Name
-$outfile = (Get-Location).Path + "${script}_step1.ps1"
+$outfile = (Get-Location).Path + "\${script}_step1.ps1"
 
 if(test-path "$outfile")
 {
