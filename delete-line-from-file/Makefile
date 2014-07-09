@@ -12,6 +12,10 @@ t2: test.txt.tmp
 	powershell $(PS_SW) -file t2.ps1
 	-diff -uw test.txt test.txt.tmp
 
+t3: test.txt.tmp
+	powershell $(PS_SW) -file t3.ps1
+	-diff -uw test.txt test.txt.tmp
+
 test.txt.tmp:
 	cp test.txt $@
 
