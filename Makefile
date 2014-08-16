@@ -1,4 +1,5 @@
 clean:
+	$(MAKE) -C set-location clean
 	$(MAKE) -C scanning-registry-keys clean
 	$(MAKE) -C get-node-value-versus-innertext clean
 	$(MAKE) -C make_should_fail_with_exit_ps clean
