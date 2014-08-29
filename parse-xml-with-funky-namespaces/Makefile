@@ -1,5 +1,11 @@
 include ../common-settings.mk
 
+add_group_before_another:
+	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts2.xml
+	$(QUIET_PS)$(PS) $(PS_SW) -file add-group-before-another-pre-existing-group.ps1
+	-$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts2.xml.result
+	-diff -uw -U15 ts2.xml ts2.xml.result
+
 dar: disable_after_restore
 disable_after_restore:
 	$(QUIET_TIDY)$(TIDY) $(TIDY_SW) ts.xml
