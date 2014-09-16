@@ -1,4 +1,5 @@
 clean:
+	$(MAKE) -C update_slsserver_xml clean
 	$(MAKE) -C set-location clean
 	$(MAKE) -C scanning-registry-keys clean
 	$(MAKE) -C get-node-value-versus-innertext clean
