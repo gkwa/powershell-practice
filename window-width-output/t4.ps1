@@ -12,3 +12,5 @@ if( $Host -and $Host.UI -and $Host.UI.RawUI ) {
   $newSize = New-Object $typeName (500, $oldSize.Height)
   $rawUI.BufferSize = $newSize
 }
+
+$Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size (500, 25)
