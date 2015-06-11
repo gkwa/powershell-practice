@@ -1,6 +1,7 @@
 <#
 
-http://blogs.technet.com/b/heyscriptingguy/archive/2006/12/04/how-can-i-expand-the-width-of-the-windows-powershell-console.aspx
+https://goo.gl/f9Y2xx
+http://goo.gl/EwUTBr
 
 #>
 
