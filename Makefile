@@ -1,4 +1,5 @@
 clean:
+	$(MAKE) -C window-width-output clean
 	$(MAKE) -C update_slsserver_xml clean
 	$(MAKE) -C set-location clean
 	$(MAKE) -C scanning-registry-keys clean
