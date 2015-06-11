@@ -16,13 +16,6 @@ if( $Host -and $Host.UI -and $Host.UI.RawUI ) {
 write-verbose "$(get-date)"
 write-verbose $($s="";for($i=1;$i -lt 10;$i+=1) {$s+=([string] $i * 9) + " "};$s*5)
 
+write-host "hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello "
 
-$pshost = get-host
-$pswindow = $pshost.ui.rawui
-
-$newsize = $pswindow.buffersize
-$newsize.height = 3000
-$newsize.width = 450
-$pswindow.buffersize = $newsize
-
-$Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size (500, 25)
+"bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye"
