@@ -32,14 +32,6 @@ function Set-OutputBuffer($width=10000) {
 	$windowSize=$host.ui.rawui.WindowSize
 	$windowSize.width=$maxSize.width
 	$host.ui.rawui.WindowSize=$windowSize
-
-	$bufferSize=$host.ui.rawui.bufferSize
-	$bufferSize.width=1000
-	$host.ui.rawui.BufferSize=$BufferSize
-	$maxSize=$host.ui.rawui.MaxWindowSize
-	$windowSize=$host.ui.rawui.WindowSize
-	$windowSize.width=1000
-	$host.ui.rawui.WindowSize=$windowSize
     }
 }
 
@@ -51,4 +43,3 @@ Set-OutputBUffer
 $host.ui.rawui
 write-verbose "$(get-date)"
 write-verbose $($s="";for($i=1;$i -lt 10;$i+=1) {$s+=([string] $i * 9) + " "};$s*5)
-
