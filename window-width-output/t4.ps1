@@ -13,6 +13,10 @@ if( $Host -and $Host.UI -and $Host.UI.RawUI ) {
   $rawUI.BufferSize = $newSize
 }
 
+write-verbose "$(get-date)"
+write-verbose $($s="";for($i=1;$i -lt 10;$i+=1) {$s+=([string] $i * 9) + " "};$s*5)
+
+
 $pshost = get-host
 $pswindow = $pshost.ui.rawui
 
