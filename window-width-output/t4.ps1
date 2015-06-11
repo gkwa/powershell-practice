@@ -13,4 +13,12 @@ if( $Host -and $Host.UI -and $Host.UI.RawUI ) {
   $rawUI.BufferSize = $newSize
 }
 
+$pshost = get-host
+$pswindow = $pshost.ui.rawui
+
+$newsize = $pswindow.buffersize
+$newsize.height = 3000
+$newsize.width = 450
+$pswindow.buffersize = $newsize
+
 $Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size (500, 25)
