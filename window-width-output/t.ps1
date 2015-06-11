@@ -32,6 +32,14 @@ function Set-OutputBuffer($width=10000) {
 	$windowSize=$host.ui.rawui.WindowSize
 	$windowSize.width=$maxSize.width
 	$host.ui.rawui.WindowSize=$windowSize
+
+	$bufferSize=$host.ui.rawui.bufferSize
+	$bufferSize.width=1000
+	$host.ui.rawui.BufferSize=$BufferSize
+	$maxSize=$host.ui.rawui.MaxWindowSize
+	$windowSize=$host.ui.rawui.WindowSize
+	$windowSize.width=1000
+	$host.ui.rawui.WindowSize=$windowSize
     }
 }
 
