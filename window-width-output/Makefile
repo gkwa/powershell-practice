@@ -9,3 +9,4 @@ t1:
 	bash -o pipefail -c 'powershell $(PS_SW) -file t.ps1 | tee output.txt'
 
 clean:
+	rm -f output.txt
