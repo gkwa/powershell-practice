@@ -6,6 +6,6 @@ PS_SW += -noprofile
 PS_SW += -noninteractive
 
 t1:
-	bash -o pipefail -c 'powershell $(PS_SW) -file t.ps1 | tee CreateMDTDeploymentShare_trace_$@.txt'
+	bash -o pipefail -c 'powershell $(PS_SW) -file t.ps1 | tee output.txt'
 
 clean:
