@@ -5,9 +5,11 @@ PS_SW += -executionpolicy bypass
 PS_SW += -noprofile
 PS_SW += -noninteractive
 
+t3:
+	bash -o pipefail -c 'powershell $(PS_SW) -file t3.ps1 | tee output.txt'
+
 t2:
 	bash -o pipefail -c 'powershell $(PS_SW) -file t2.ps1 | tee output.txt'
-
 
 t1:
 	bash -o pipefail -c 'powershell $(PS_SW) -file t.ps1 | tee output.txt'
