@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<files>
+  <!-- template
+  <file mp4url=""
+        duration=""
+        shortname=""
+        actl3url="">
+    <note>
+      <![CDATA[
+Manual check with this about 20 tries produces good results.
+          ]]>
+</note>
+</file>
+-->
+  <file mp4url="http://taylors-bucket.s3.amazonaws.com/timestamps_bw_5hr-3.mp4"
+        duration="18000"
+        shortname="f0"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/timestamp_br-500k_vbr-3.0_time-5hr_ldmp-off_key-10.actl3">
+    <note>
+      <![CDATA[
+Manual check with this about 20 tries produces good results.
+          ]]>
+</note>
+  </file>
+  <file mp4url="http://taylors-bucket.s3.amazonaws.com/timestamps_bw_5hr-3.mp4"
+        duration="18000"
+        shortname="f1"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/timestamp_br-500k_vbr-7.0_time-5hr_ldmp-off_key-10.actl3">
+    <note>
+      <![CDATA[
+Produces bad results: see time 100.
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="300"
+        shortname="f2"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/1080i5994-F1-10MFull-8ch-300s-V3.164.01.actl3">
+    <note>
+      <![CDATA[
+
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="30"
+        shortname="f3"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/720p5994-Kyoto-10MFull-2ch-30s-V3.91.actl3">
+    <note>
+      <![CDATA[
+
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="300"
+        shortname="f4"
+        actl3url="http://streambox.support.s3.amazonaws.com/standard_actl3_test_clips/SD-5994i-BusFire-4MFull-5min-V3.91.actl3">
+    <note>
+      <![CDATA[
+
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="30"
+        shortname="f5"
+        actl3url="http://streambox.support.s3.amazonaws.com/standard_actl3_test_clips/1080i5994-F1-35MFull-6ch-30s-V3.91.actl3">
+    <note>
+      <![CDATA[
+
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="30"
+        shortname="f6"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/720p5994-Kyoto-10MFull-2ch-30s-V3.91.actl3">
+    <note>
+      <![CDATA[
+Standard test clips
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="90"
+        shortname="f7"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/720p50-DVDUpCon-WestBeirut-90s.actl3">
+    <note>
+      <![CDATA[
+Standard test clips
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="30"
+        shortname="f8"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/720p5994-Kyoto-35MFull-6ch-30s-V3.91.actl3">
+    <note>
+      <![CDATA[
+Standard test clips
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="0"
+        shortname="f9"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/68.143.85.253-7771-071216-154749_574.actl3">
+    <note>
+      <![CDATA[
+Louis checks church 720p customer's file
+          ]]>
+</note>
+  </file>
+  <file mp4url="http://taylors-bucket.s3.amazonaws.com/timestamps_bw_5hr-3.mp4"
+        duration="18000"
+        shortname="f10"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/timestamp_br-500k_vbr-1.0_time-5hr_ldmp-off_key-300.actl3">
+    <note>
+      <![CDATA[
+Produces bad results: see position 100
+          ]]>
+</note>
+  </file>
+  <file mp4url="http://taylors-bucket.s3.amazonaws.com/timestamp_1hr.mp4"
+        duration="3600"
+        shortname="f11"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/timestamp_br-1MB_vbr-0.2_time-1hr_ldmp-off.actl3">
+    <note>
+      <![CDATA[
+
+          ]]>
+</note>
+  </file>
+  <file mp4url="http://taylors-bucket.s3.amazonaws.com/timestamp_5hr.mp4"
+        duration="18000"
+        shortname="f12"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/timestamp-br-500kvbr-3.0time-5hrldmp-offkey-300.actl3">
+    <note>
+      <![CDATA[
+
+          ]]>
+</note>
+  </file>
+  <file mp4url="http://taylors-bucket.s3.amazonaws.com/timestamps_bw_5hr-3.mp4"
+        duration="18000"
+        shortname="f13"
+        actl3url="http://taylors-bucket.s3.amazonaws.com/timestamp-br-500kvbr-3.0time-5hrldmp-offkey-300-1.actl3">
+    <note>
+      <![CDATA[
+Doesn't include overall time in attmpt to not confuse OCR.
+          ]]>
+</note>
+  </file>
+  <file mp4url="http://taylors-bucket.s3.amazonaws.com/timestamps_bw_5hr.mp4"
+        duration="18000"
+        shortname="f14"
+        actl3url="">
+    <note>
+      <![CDATA[
+Black and white timestamps to use tesseract.
+          ]]>
+</note>
+  </file>
+  <file mp4url=""
+        duration="120"
+        shortname="f15"
+        actl3url="http://streambox.support.s3.amazonaws.com/standard_actl3_test_clips/1080i5994-F1-10MFull-422color-singlefield-2ch-2minutes-V3.148.02.actl3">
+    <note>
+      <![CDATA[
+
+          ]]>
+</note>
+  </file>
+</files>
