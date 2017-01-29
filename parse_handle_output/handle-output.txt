@@ -1,0 +1,17 @@
+
+Nthandle v4.1 - Handle viewer
+Copyright (C) 1997-2016 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+VirtualBox.exe     pid: 3964   type: File            5C: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\Logs\VBoxHardening.log
+VirtualBox.exe     pid: 968    type: File             4: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\Logs\VBoxHardening.log
+VirtualBox.exe     pid: 7944   type: File             4: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\Logs\VBoxHardening.log
+VirtualBox.exe     pid: 7944   type: File           328: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\eval-win8x64-enterprise-disk1.vmdk
+VirtualBox.exe     pid: 7944   type: File           328: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\eval-win8x64-enterprise-disk1.vmdk
+VirtualBox.exe     pid: 7944   type: File           A3C: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\Logs\VBox.log
+VirtualBox.exe     pid: 7944   type: File           EAC: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\eval-win8x64-enterprise_default_1485670632729_58486.webm
+VirtualBox.exe     pid: 7944   type: File           EAC: D:\vbox\eval-win8x64-enterprise_default_1485670632729_58486\eval-win8x64-enterprise_default_1485670632729_58486.webm
+mstsc.exe          pid: 448    type: File            34: D:\vagrant-provision-windows\eval-win8x64-enterprise
+handle.exe         pid: 3808   type: File            38: D:\vagrant-provision-windows\eval-win8x64-enterprise
+handle.exe         pid: 4408   type: File            7C: D:\vagrant-provision-windows\eval-win8x64-enterprise
+handle64.exe       pid: 4604   type: File            44: D:\vagrant-provision-windows\eval-win8x64-enterprise
